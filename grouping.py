@@ -1,11 +1,11 @@
-# ======= #
+# ------- #
 # GLOBALS #
-# ======= #
+# ------- #
 INF = float("inf")
 
-# ==== #
+# ---- #
 # MAIN #
-# ==== #
+# ---- #
 def main():
     n = int(input())
     k = int(input())
@@ -27,8 +27,11 @@ def main():
 # SOLVER #
 # ------ #
 def solve(n, k, pSum, dp, traceDp):
+    # k partitions
     for i in range(1, k + 1):
+        # n positive integers to partition
         for j in range(i, n + 1):
+            # go through every combination of partitions
             for m in range(i - 1, j):
                 if dp[i - 1][m] < INF:
                     # sum of the i'th group using the precalculated sums
@@ -105,7 +108,7 @@ def init_traceDp(n, k):
 
     return traceDp
 
-# initialises a pre calculated sums table where each i index is the sum of the first i elements e.g.
+# initialises a pre calculated sums table where each i index is the sum of the first i elements for cubing later e.g.
 # [0, 3, 4, 6]
 def init_pSums(n, arr):
     pSum = [0] * (n + 1)
@@ -159,4 +162,3 @@ def init_pSums(n, arr):
 #
 # This results in O(knn) or O(k*n^2) which is the final time complexity of this solution.
 main()
-
